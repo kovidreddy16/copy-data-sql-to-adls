@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "copy-sql-adls"
+		},
+		"ADLS_LS_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDb_LS_password": {
+			"value": ""
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"value": "https://copydata1sql1adls.dfs.core.windows.net/"
+		},
+		"AzureSqlDb_LS_properties_typeProperties_server": {
+			"value": "ARUN-PC.database.windows.net"
+		},
+		"AzureSqlDb_LS_properties_typeProperties_database": {
+			"value": "sales.database"
+		},
+		"AzureSqlDb_LS_properties_typeProperties_userName": {
+			"value": "sqldatbase"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

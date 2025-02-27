@@ -1,0 +1,84 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "copy-sql-adls"
+		},
+		"ADLS_LS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ADLS_LS'"
+		},
+		"AzureSqlDb_LS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDb_LS'"
+		},
+		"ADLS_LS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://copydata1sql1adls.dfs.core.windows.net/"
+		},
+		"AzureSqlDb_LS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ARUN-PC.database.windows.net"
+		},
+		"AzureSqlDb_LS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sales.database"
+		},
+		"AzureSqlDb_LS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqldatbase"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "copy-sql-adls_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ADLS_LS_accountKey": {
+						"value": "[parameters('ADLS_LS_accountKey')]"
+					},
+					"AzureSqlDb_LS_password": {
+						"value": "[parameters('AzureSqlDb_LS_password')]"
+					},
+					"ADLS_LS_properties_typeProperties_url": {
+						"value": "[parameters('ADLS_LS_properties_typeProperties_url')]"
+					},
+					"AzureSqlDb_LS_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDb_LS_properties_typeProperties_server')]"
+					},
+					"AzureSqlDb_LS_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDb_LS_properties_typeProperties_database')]"
+					},
+					"AzureSqlDb_LS_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDb_LS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
