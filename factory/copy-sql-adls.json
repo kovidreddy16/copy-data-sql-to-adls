@@ -1,0 +1,9 @@
+{
+	"name": "copy-sql-adls",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "665c08b6-2294-46c6-9e33-5ed685ed78b1",
+		"tenantId": "8d281d1d-9c4d-4bf7-b16e-032d15de9f6c"
+	}
+}
